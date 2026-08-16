@@ -10,6 +10,15 @@ export interface CaseStudy {
   quoteAuthor: string;
 }
 
+export interface TimelineItem {
+  company: string;
+  role: string;
+  date: string;
+  location: string;
+  description: string;
+  current: boolean;
+}
+
 export interface Translations {
   seo: {
     homeTitle: string;
@@ -33,6 +42,12 @@ export interface Translations {
     heading: string;
     subheading: string;
     items: { title: string; description: string }[];
+  };
+  timeline: {
+    heading: string;
+    subheading: string;
+    currentLabel: string;
+    items: TimelineItem[];
   };
   caseStudies: {
     heading: string;
@@ -132,6 +147,66 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
           title: 'E-commerce & WordPress (freelance)',
           description:
             'Ved siden af mit faste arbejde har jeg stor erfaring med at udvikle og vedligeholde e-commerce-løsninger som freelancer, hvor WooCommerce og WordPress er mine primære værktøjer — fra temacustomisering og betalingsintegration til SEO og performance.',
+        },
+      ],
+    },
+    timeline: {
+      heading: 'Karriere',
+      subheading: 'Min professionelle rejse',
+      currentLabel: 'Nuværende',
+      items: [
+        {
+          company: 'Dalux',
+          role: 'Team Lead',
+          date: 'Jul. 2025 – nu',
+          location: 'København Ø',
+          description:
+            'Fører et udviklerteam og er fortsat aktiv i det tekniske arbejde med skalerede .NET-systemer.',
+          current: true,
+        },
+        {
+          company: 'Dalux',
+          role: 'Software Developer',
+          date: 'Sep. 2024 – jul. 2025',
+          location: 'København',
+          description: 'Udviklede software i en skaleret, shardet arkitektur hos Dalux.',
+          current: false,
+        },
+        {
+          company: 'Concensur · Freelance',
+          role: 'Software Developer',
+          date: 'Jan. 2019 – nu',
+          location: 'Region Hovedstaden',
+          description:
+            'Freelance full-stack-udvikling for en bred vifte af kunder med fokus på systemintegration, procesautomatisering og workflow-optimering.',
+          current: true,
+        },
+        {
+          company: 'cBrain',
+          role: 'Software Developer',
+          date: 'Feb. 2023 – nov. 2023',
+          location: 'København',
+          description:
+            'Del af R&D-teamet for processer og integrationer; bidrog til cBrains domænespecifikke sprog (DSL), VSCode-plugins, DevOps-pipelines og F2 REST API\'et. Tech: .NET, C#, MSSQL, ElasticSearch, REST, Node.js, TypeScript.',
+          current: false,
+        },
+        {
+          company: 'cBrain',
+          role: 'Software Developer',
+          date: 'Sep. 2022 – feb. 2023',
+          location: 'København',
+          description:
+            'Udviklede skræddersyede integrationer og løsninger oven på F2-platformen for kunder i den centrale administration, med fokus på robusthed og effektivitet i produktion.',
+          current: false,
+        },
+        {
+          company: 'cBrain',
+          role: 'Student Software Developer',
+          date: 'Jun. 2021 – sep. 2022',
+          location: 'København',
+          description:
+            'Udviklede et BDD-testframework til cBrains lavkode-sprog, ledte konverteringen af den interne DevOps-arbejdsgang til Git, og byggede en allokeringsplatform oven på Azure DevOps.',
+          current: false,
         },
       ],
     },
@@ -305,6 +380,66 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
           title: 'E-commerce & WordPress (freelance)',
           description:
             "Alongside my full-time role, I have extensive freelance experience building and maintaining e-commerce solutions, with WooCommerce and WordPress as my primary tools — from theme customization and payment integration to SEO and performance.",
+        },
+      ],
+    },
+    timeline: {
+      heading: 'Career',
+      subheading: 'My professional journey',
+      currentLabel: 'Current',
+      items: [
+        {
+          company: 'Dalux',
+          role: 'Team Lead',
+          date: 'Jul 2025 – Present',
+          location: 'Copenhagen Ø',
+          description:
+            'Leading a development team while staying hands-on with the technical work on scaled .NET systems.',
+          current: true,
+        },
+        {
+          company: 'Dalux',
+          role: 'Software Developer',
+          date: 'Sep 2024 – Jul 2025',
+          location: 'Copenhagen',
+          description: 'Developed software within a scaled, sharded architecture at Dalux.',
+          current: false,
+        },
+        {
+          company: 'Concensur · Freelance',
+          role: 'Software Developer',
+          date: 'Jan 2019 – Present',
+          location: 'Capital Region, Denmark',
+          description:
+            'Freelance full-stack development for a wide range of clients, focused on system integration, process automation, and workflow optimization.',
+          current: true,
+        },
+        {
+          company: 'cBrain',
+          role: 'Software Developer',
+          date: 'Feb 2023 – Nov 2023',
+          location: 'Copenhagen',
+          description:
+            "Part of the R&D team for processes and integrations; contributed to cBrain's proprietary DSL, VSCode plugins, DevOps pipelines, and the F2 REST API. Tech: .NET, C#, MSSQL, ElasticSearch, REST, Node.js, TypeScript.",
+          current: false,
+        },
+        {
+          company: 'cBrain',
+          role: 'Software Developer',
+          date: 'Sep 2022 – Feb 2023',
+          location: 'Copenhagen',
+          description:
+            'Built tailored integrations and solutions on top of the F2 platform for clients in the central administration domain, with a focus on robustness and production efficiency.',
+          current: false,
+        },
+        {
+          company: 'cBrain',
+          role: 'Student Software Developer',
+          date: 'Jun 2021 – Sep 2022',
+          location: 'Copenhagen',
+          description:
+            "Built a BDD testing framework for cBrain's low-code language, led the conversion of the internal DevOps workflow to Git, and built a resource-allocation platform on top of Azure DevOps.",
+          current: false,
         },
       ],
     },

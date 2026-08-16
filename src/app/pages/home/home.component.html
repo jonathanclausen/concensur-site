@@ -69,6 +69,42 @@
   </div>
 </section>
 
+<!-- Timeline -->
+<section id="career" class="mx-auto max-w-3xl px-6 py-20 scroll-mt-20">
+  <div class="text-center mb-12">
+    <h2 class="font-display text-sm font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400">{{ t().timeline.heading }}</h2>
+    <p class="mt-2 font-display text-3xl font-bold text-slate-900 dark:text-white">{{ t().timeline.subheading }}</p>
+  </div>
+
+  <ol class="relative border-l border-slate-200 dark:border-white/10 ml-3">
+    @for (item of t().timeline.items; track item.company + item.role + item.date) {
+      <li class="relative pl-8 pb-10 last:pb-0">
+        <span class="absolute -left-[7px] top-1 size-3.5 rounded-full border-2 border-white dark:border-slate-950"
+              [ngClass]="item.current ? 'bg-violet-500' : 'bg-slate-300 dark:bg-slate-600'"></span>
+
+        <div class="flex flex-wrap items-baseline gap-x-2">
+          <h3 class="font-display font-semibold text-slate-900 dark:text-white">{{ item.role }}</h3>
+          <span class="text-slate-400 dark:text-slate-500">&middot;</span>
+          <span class="text-slate-600 dark:text-slate-300">{{ item.company }}</span>
+        </div>
+
+        <div class="mt-1 flex flex-wrap items-center gap-x-2 text-xs text-slate-500 dark:text-slate-400">
+          <span>{{ item.date }}</span>
+          <span>&middot;</span>
+          <span>{{ item.location }}</span>
+          @if (item.current) {
+            <span class="rounded-full bg-violet-100 dark:bg-violet-500/15 px-2 py-0.5 text-violet-700 dark:text-violet-300 font-medium">
+              {{ t().timeline.currentLabel }}
+            </span>
+          }
+        </div>
+
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{{ item.description }}</p>
+      </li>
+    }
+  </ol>
+</section>
+
 <!-- Case Studies -->
 <section id="cases" class="bg-slate-50 dark:bg-white/[0.02] border-y border-slate-200 dark:border-white/10 transition-colors scroll-mt-20">
   <div class="mx-auto max-w-5xl px-6 py-20">

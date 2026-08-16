@@ -181,7 +181,7 @@
     <p class="mt-3 text-slate-600 dark:text-slate-300">{{ t().contact.subheading }}</p>
     <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">{{ t().contact.orForm }}</p>
 
-    <form (submit)="onSubmit($event, nameInput.value, emailInput.value, messageInput.value)"
+    <form (submit)="onSubmit($event, nameInput, emailInput, messageInput)"
           class="mt-10 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-6 sm:p-8 text-left shadow-xl shadow-slate-900/5 space-y-4">
       <div class="grid gap-4 sm:grid-cols-2">
         <div>
@@ -200,10 +200,17 @@
         <textarea #messageInput id="message" name="message" rows="4" required [placeholder]="t().contact.formMessagePlaceholder"
                   class="w-full rounded-lg border border-slate-300 dark:border-white/10 bg-white dark:bg-white/5 px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-shadow resize-none"></textarea>
       </div>
-      <button type="submit"
-              class="w-full rounded-lg bg-gradient-to-r from-violet-600 to-cyan-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-500/25 hover:shadow-xl hover:shadow-violet-500/30 transition-all">
-        {{ t().contact.formSubmit }}
+      <button type="submit" [disabled]="formStatus() === 'submitting'"
+              class="w-full rounded-lg bg-gradient-to-r from-violet-600 to-cyan-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-500/25 hover:shadow-xl hover:shadow-violet-500/30 transition-all disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:shadow-lg">
+        {{ formStatus() === 'submitting' ? t().contact.formSubmitting : t().contact.formSubmit }}
       </button>
+
+      @if (formStatus() === 'success') {
+        <p class="text-sm font-medium text-emerald-600 dark:text-emerald-400 text-center">{{ t().contact.formSuccess }}</p>
+      }
+      @if (formStatus() === 'error') {
+        <p class="text-sm font-medium text-rose-600 dark:text-rose-400 text-center">{{ t().contact.formError }}</p>
+      }
     </form>
 
     <div class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-slate-500 dark:text-slate-400">

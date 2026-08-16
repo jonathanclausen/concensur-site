@@ -56,6 +56,9 @@ export interface Translations {
     formMessage: string;
     formMessagePlaceholder: string;
     formSubmit: string;
+    formSubmitting: string;
+    formSuccess: string;
+    formError: string;
   };
   footer: {
     terms: string;
@@ -221,6 +224,9 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
       formMessage: 'Besked',
       formMessagePlaceholder: 'Fortæl mig om dit projekt...',
       formSubmit: 'Send',
+      formSubmitting: 'Sender...',
+      formSuccess: 'Tak for din besked! Jeg vender tilbage hurtigst muligt.',
+      formError: 'Der gik noget galt. Prøv igen, eller skriv direkte til jc@concensur.dk.',
     },
     footer: {
       terms: 'Forretningsbetingelser',
@@ -384,6 +390,9 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
       formMessage: 'Message',
       formMessagePlaceholder: 'Tell me about your project...',
       formSubmit: 'Send',
+      formSubmitting: 'Sending...',
+      formSuccess: "Thanks for your message! I'll get back to you soon.",
+      formError: 'Something went wrong. Please try again, or email jc@concensur.dk directly.',
     },
     footer: {
       terms: 'Business terms',

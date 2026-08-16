@@ -38,10 +38,45 @@ export class HomeComponent {
     this.expandedCase.update((current) => (current === index ? null : index));
   }
 
-  onSubmit(event: Event, name: string, email: string, message: string): void {
+  private readonly web3formsAccessKey = '53830c23-a22d-4f03-bbba-36b9f4aeb766';
+
+  readonly formStatus = signal<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  async onSubmit(
+    event: Event,
+    nameInput: HTMLInputElement,
+    emailInput: HTMLInputElement,
+    messageInput: HTMLTextAreaElement
+  ): Promise<void> {
     event.preventDefault();
-    const subject = encodeURIComponent(`Henvendelse fra ${name || 'concensur.dk'}`);
-    const body = encodeURIComponent(`${message}\n\n${email}`);
-    window.location.href = `mailto:jc@concensur.dk?subject=${subject}&body=${body}`;
+    this.formStatus.set('submitting');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: this.web3formsAccessKey,
+          subject: `Henvendelse fra ${nameInput.value || 'concensur.dk'}`,
+          from_name: nameInput.value || 'concensur.dk',
+          name: nameInput.value,
+          email: emailInput.value,
+          message: messageInput.value,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        this.formStatus.set('success');
+        nameInput.value = '';
+        emailInput.value = '';
+        messageInput.value = '';
+      } else {
+        this.formStatus.set('error');
+      }
+    } catch {
+      this.formStatus.set('error');
+    }
   }
 }

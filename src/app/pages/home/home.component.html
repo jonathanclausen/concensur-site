@@ -1,0 +1,219 @@
+<!-- Hero -->
+<section class="relative overflow-hidden">
+  <div class="pointer-events-none absolute inset-0 -z-10 bg-slate-50 dark:bg-slate-950">
+    <div class="absolute -top-32 -left-24 size-96 rounded-full bg-violet-400/30 dark:bg-violet-600/20 blur-3xl animate-float"></div>
+    <div class="absolute -top-16 right-0 size-96 rounded-full bg-cyan-400/30 dark:bg-cyan-500/20 blur-3xl animate-float-slow"></div>
+    <div class="absolute inset-0 [background-image:radial-gradient(circle,theme(colors.slate.400/25%)_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,black,transparent)] dark:[background-image:radial-gradient(circle,theme(colors.white/8%)_1px,transparent_1px)]"></div>
+  </div>
+
+  <div class="mx-auto max-w-5xl px-6 pt-24 pb-20 text-center">
+    <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-white/10 bg-white/70 dark:bg-white/5 px-4 py-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 backdrop-blur">
+      <span class="size-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+      {{ t().hero.eyebrow }}
+    </span>
+
+    <h1 class="mt-6 font-display text-4xl sm:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.1]">
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-violet-600 via-fuchsia-500 to-cyan-500">
+        {{ t().hero.title }}
+      </span>
+    </h1>
+
+    <p class="mt-3 font-display text-lg sm:text-xl font-medium text-slate-500 dark:text-slate-400">
+      {{ t().hero.subtitle }}
+    </p>
+
+    <p class="mt-6 max-w-2xl mx-auto text-slate-600 dark:text-slate-300 leading-relaxed">
+      {{ t().hero.description }}
+    </p>
+
+    <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
+      <a href="mailto:jc@concensur.dk"
+         class="rounded-full bg-gradient-to-r from-violet-600 to-cyan-500 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-500/25 hover:shadow-xl hover:shadow-violet-500/30 hover:-translate-y-0.5 transition-all">
+        {{ t().hero.cta }}
+      </a>
+      <a href="#competencies"
+         class="rounded-full border border-slate-300 dark:border-white/15 px-7 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+        {{ t().hero.ctaSecondary }}
+      </a>
+    </div>
+
+    <div class="mt-10 flex items-center justify-center gap-4">
+      <a [href]="linkedinUrl" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+         class="grid size-10 place-items-center rounded-full border border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400 hover:text-white hover:border-transparent hover:bg-gradient-to-br hover:from-violet-600 hover:to-cyan-500 transition-all">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4.5">
+          <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.62 0 4.29 2.38 4.29 5.48v6.26ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.11 20.45H3.56V9h3.55v11.45Z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Competencies -->
+<section id="competencies" class="mx-auto max-w-5xl px-6 py-20 scroll-mt-20">
+  <div class="text-center mb-12">
+    <h2 class="font-display text-sm font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400">{{ t().competencies.subheading }}</h2>
+    <p class="mt-2 font-display text-3xl font-bold text-slate-900 dark:text-white">{{ t().competencies.heading }}</p>
+  </div>
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    @for (item of t().competencies.items; track item.title; let i = $index) {
+      <div class="group relative rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-6 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-500/10 hover:border-violet-300 dark:hover:border-violet-500/40 transition-all">
+        <div class="grid size-11 place-items-center rounded-xl bg-gradient-to-br from-violet-600 to-cyan-500 text-white shadow-md shadow-violet-500/25">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-5.5">
+            <path stroke-linecap="round" stroke-linejoin="round" [attr.d]="competencyIcons[i]" />
+          </svg>
+        </div>
+        <h3 class="mt-4 font-display font-semibold text-slate-900 dark:text-white">{{ item.title }}</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{{ item.description }}</p>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- Case Studies -->
+<section id="cases" class="bg-slate-50 dark:bg-white/[0.02] border-y border-slate-200 dark:border-white/10 transition-colors scroll-mt-20">
+  <div class="mx-auto max-w-5xl px-6 py-20">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-sm font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400">{{ t().caseStudies.heading }}</h2>
+      <p class="mt-2 font-display text-3xl font-bold text-slate-900 dark:text-white">{{ t().caseStudies.subheading }}</p>
+    </div>
+
+    <div class="grid gap-5 sm:grid-cols-2">
+      @for (item of t().caseStudies.items; track item.company; let i = $index) {
+        <div class="group relative overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.03] transition-all"
+             [ngClass]="expandedCase() === i ? 'shadow-xl shadow-violet-500/10' : ''">
+          <div class="absolute inset-x-0 top-0 h-1 bg-violet-500/60 dark:bg-violet-500/50"></div>
+
+          <button type="button" (click)="toggleCase(i)" class="w-full text-left p-6 cursor-pointer">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <h3 class="font-display text-lg font-semibold text-slate-900 dark:text-white">{{ item.company }}</h3>
+                <p class="mt-0.5 text-xs font-medium text-slate-500 dark:text-slate-400">{{ item.industry }}</p>
+              </div>
+              <span class="grid size-8 shrink-0 place-items-center rounded-full border border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400 transition-transform"
+                    [class.rotate-45]="expandedCase() === i">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </span>
+            </div>
+
+            <p class="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              <span class="font-semibold text-slate-800 dark:text-slate-100">{{ t().caseStudies.challengeLabel }}:</span>
+              {{ item.challenge }}
+            </p>
+          </button>
+
+          <div class="overflow-hidden transition-[max-height] duration-300 ease-out"
+               [style.max-height]="expandedCase() === i ? '600px' : '0px'">
+            <div class="px-6 pb-6 space-y-4 border-t border-slate-100 dark:border-white/5 pt-4">
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                <span class="font-semibold text-slate-800 dark:text-slate-100">{{ t().caseStudies.solutionLabel }}:</span>
+                {{ item.solution }}
+              </p>
+
+              <div class="flex flex-wrap gap-2">
+                @for (tag of item.tags; track tag) {
+                  <span class="rounded-full bg-slate-100 dark:bg-white/5 px-2.5 py-1 text-xs font-medium text-slate-600 dark:text-slate-300">{{ tag }}</span>
+                }
+              </div>
+
+              @if (item.quote) {
+                <blockquote class="rounded-xl border-l-2 border-violet-500 bg-slate-50 dark:bg-white/5 p-4">
+                  <p class="text-sm font-medium text-slate-700 dark:text-slate-200 italic leading-relaxed">&ldquo;{{ item.quote }}&rdquo;</p>
+                  <cite class="mt-2 block text-xs font-semibold text-slate-500 dark:text-slate-400 not-italic">— {{ item.quoteAuthor }}</cite>
+                </blockquote>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="mx-auto max-w-5xl px-6 py-20">
+  <div class="grid gap-12 lg:grid-cols-[auto_1fr] items-start">
+    <div class="flex justify-center lg:justify-start">
+      <div class="relative">
+        <div class="absolute -inset-3 rounded-full bg-gradient-to-br from-violet-600 to-cyan-500 blur-2xl opacity-30"></div>
+        <img src="/jonathan-clausen.jpg" [alt]="t().about.name"
+             class="relative size-32 rounded-full object-cover shadow-xl ring-4 ring-white dark:ring-slate-950" />
+      </div>
+    </div>
+    <div>
+      <h2 class="font-display text-sm font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400">{{ t().about.heading }}</h2>
+      <p class="mt-2 font-display text-2xl font-bold text-slate-900 dark:text-white">{{ t().about.name }}</p>
+      <p class="text-slate-500 dark:text-slate-400 font-medium">{{ t().about.role }}</p>
+
+      <div class="mt-5 space-y-4 max-w-2xl text-slate-600 dark:text-slate-300 leading-relaxed">
+        @for (paragraph of t().about.text; track paragraph) {
+          <p>{{ paragraph }}</p>
+        }
+      </div>
+
+      <dl class="mt-8 grid grid-cols-3 max-w-md gap-4 border-t border-slate-200 dark:border-white/10 pt-6">
+        <div>
+          <dt class="font-display text-2xl font-bold text-slate-900 dark:text-white">{{ yearsExperience }}+</dt>
+          <dd class="text-xs text-slate-500 dark:text-slate-400 mt-1">{{ t().about.statYears }}</dd>
+        </div>
+        <div>
+          <dt class="font-display text-2xl font-bold text-slate-900 dark:text-white">{{ companiesCount }}+</dt>
+          <dd class="text-xs text-slate-500 dark:text-slate-400 mt-1">{{ t().about.statCompanies }}</dd>
+        </div>
+        <div>
+          <dt class="font-display text-2xl font-bold text-slate-900 dark:text-white">2019</dt>
+          <dd class="text-xs text-slate-500 dark:text-slate-400 mt-1">{{ t().about.statSince }}</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="relative overflow-hidden">
+  <div class="pointer-events-none absolute inset-0 -z-10 bg-slate-50 dark:bg-slate-950">
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 size-[32rem] rounded-full bg-violet-400/20 dark:bg-violet-600/10 blur-3xl"></div>
+  </div>
+
+  <div class="mx-auto max-w-3xl px-6 py-20 text-center">
+    <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">{{ t().contact.heading }}</h2>
+    <p class="mt-3 text-slate-600 dark:text-slate-300">{{ t().contact.subheading }}</p>
+    <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">{{ t().contact.orForm }}</p>
+
+    <form (submit)="onSubmit($event, nameInput.value, emailInput.value, messageInput.value)"
+          class="mt-10 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-6 sm:p-8 text-left shadow-xl shadow-slate-900/5 space-y-4">
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label for="name" class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5">{{ t().contact.formName }}</label>
+          <input #nameInput id="name" name="name" type="text" autocomplete="name"
+                 class="w-full rounded-lg border border-slate-300 dark:border-white/10 bg-white dark:bg-white/5 px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-shadow" />
+        </div>
+        <div>
+          <label for="email" class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5">{{ t().contact.formEmail }}</label>
+          <input #emailInput id="email" name="email" type="email" autocomplete="email" required
+                 class="w-full rounded-lg border border-slate-300 dark:border-white/10 bg-white dark:bg-white/5 px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-shadow" />
+        </div>
+      </div>
+      <div>
+        <label for="message" class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5">{{ t().contact.formMessage }}</label>
+        <textarea #messageInput id="message" name="message" rows="4" required [placeholder]="t().contact.formMessagePlaceholder"
+                  class="w-full rounded-lg border border-slate-300 dark:border-white/10 bg-white dark:bg-white/5 px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-shadow resize-none"></textarea>
+      </div>
+      <button type="submit"
+              class="w-full rounded-lg bg-gradient-to-r from-violet-600 to-cyan-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-500/25 hover:shadow-xl hover:shadow-violet-500/30 transition-all">
+        {{ t().contact.formSubmit }}
+      </button>
+    </form>
+
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-slate-500 dark:text-slate-400">
+      <a href="mailto:jc@concensur.dk" class="inline-flex items-center gap-2 hover:text-slate-900 dark:hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0-.83.67-1.5 1.5-1.5h16.5c.83 0 1.5.67 1.5 1.5v10.5c0 .83-.67 1.5-1.5 1.5H3.75c-.83 0-1.5-.67-1.5-1.5V6.75Z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 7 9.75 6.5L21.75 7" />
+        </svg>
+        jc&#64;concensur.dk
+      </a>
+    </div>
+  </div>
+</section>

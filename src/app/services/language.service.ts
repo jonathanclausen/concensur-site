@@ -1,10 +1,12 @@
-import { Injectable, computed, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Injectable, computed, inject, signal } from '@angular/core';
 import { Lang, TRANSLATIONS, Translations } from '../i18n/translations';
 
 const STORAGE_KEY = 'concensur-lang';
 
 @Injectable({ providedIn: 'root' })
 export class LanguageService {
+  private readonly document = inject(DOCUMENT);
   private readonly lang = signal<Lang>(this.detectInitialLang());
 
   readonly currentLang = this.lang.asReadonly();
@@ -12,8 +14,10 @@ export class LanguageService {
 
   setLang(lang: Lang): void {
     this.lang.set(lang);
-    localStorage.setItem(STORAGE_KEY, lang);
-    document.documentElement.lang = lang;
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(STORAGE_KEY, lang);
+    }
+    this.document.documentElement.lang = lang;
   }
 
   private detectInitialLang(): Lang {
@@ -23,9 +27,6 @@ export class LanguageService {
         return stored;
       }
     }
-    if (typeof navigator !== 'undefined' && navigator.language.toLowerCase().startsWith('da')) {
-      return 'da';
-    }
-    return 'en';
+    return 'da';
   }
 }

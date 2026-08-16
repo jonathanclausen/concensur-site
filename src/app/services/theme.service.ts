@@ -1,4 +1,5 @@
-import { Injectable, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Injectable, inject, signal } from '@angular/core';
 
 export type Theme = 'light' | 'dark';
 
@@ -6,6 +7,7 @@ const STORAGE_KEY = 'concensur-theme';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
+  private readonly document = inject(DOCUMENT);
   private readonly theme = signal<Theme>(this.detectInitialTheme());
 
   readonly currentTheme = this.theme.asReadonly();
@@ -20,12 +22,14 @@ export class ThemeService {
 
   setTheme(theme: Theme): void {
     this.theme.set(theme);
-    localStorage.setItem(STORAGE_KEY, theme);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(STORAGE_KEY, theme);
+    }
     this.applyTheme(theme);
   }
 
   private applyTheme(theme: Theme): void {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
+    this.document.documentElement.classList.toggle('dark', theme === 'dark');
   }
 
   private detectInitialTheme(): Theme {

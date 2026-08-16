@@ -1,6 +1,8 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { LanguageService } from '../../services/language.service';
+import { SeoService } from '../../services/seo.service';
+import { setPageLang } from '../../services/set-page-lang';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +11,20 @@ import { LanguageService } from '../../services/language.service';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  private readonly _lang = setPageLang();
   private readonly languageService = inject(LanguageService);
+  private readonly seoService = inject(SeoService);
 
   readonly t = this.languageService.t;
+
+  private readonly seoEffect = effect(() => {
+    this.seoService.setPageMeta({
+      title: this.t().seo.homeTitle,
+      description: this.t().seo.homeDescription,
+      path: '',
+      lang: this.languageService.currentLang(),
+    });
+  });
   readonly yearsExperience = new Date().getFullYear() - 2019;
   readonly companiesCount = 8;
 

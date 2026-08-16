@@ -11,6 +11,12 @@ export interface CaseStudy {
 }
 
 export interface Translations {
+  seo: {
+    homeTitle: string;
+    homeDescription: string;
+    blogTitle: string;
+    blogDescription: string;
+  };
   nav: {
     home: string;
     blog: string;
@@ -73,6 +79,13 @@ export interface Translations {
 
 export const TRANSLATIONS: Record<Lang, Translations> = {
   da: {
+    seo: {
+      homeTitle: 'Concensur | Full-stack .NET-udvikler',
+      homeDescription:
+        'Softwareudvikler med speciale i full-stack .NET-udvikling i skalerede arkitekturer. Tager freelanceprojekter inden for webudvikling, e-commerce og automatisering.',
+      blogTitle: 'Blog | Concensur',
+      blogDescription: 'Artikler om automatisering, .NET-udvikling og webshop-optimering fra Jonathan Clausen.',
+    },
     nav: {
       home: 'Forside',
       blog: 'Blog',
@@ -239,6 +252,13 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
     },
   },
   en: {
+    seo: {
+      homeTitle: 'Concensur | Full-stack .NET Developer',
+      homeDescription:
+        'Software developer specializing in full-stack .NET development within scaled architectures. Available for freelance projects in web development, e-commerce, and automation.',
+      blogTitle: 'Blog | Concensur',
+      blogDescription: 'Articles on automation, .NET development, and webshop optimization from Jonathan Clausen.',
+    },
     nav: {
       home: 'Home',
       blog: 'Blog',

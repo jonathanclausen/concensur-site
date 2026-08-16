@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://concensur.dk/</loc>
+    <xhtml:link rel="alternate" hreflang="da" href="https://concensur.dk/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://concensur.dk/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://concensur.dk/" />
+  </url>
+  <url>
+    <loc>https://concensur.dk/blog</loc>
+    <xhtml:link rel="alternate" hreflang="da" href="https://concensur.dk/blog" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://concensur.dk/en/blog" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://concensur.dk/blog" />
+  </url>
+  <url>
+    <loc>https://concensur.dk/blog/yahoo-finance-google-sheets</loc>
+    <xhtml:link rel="alternate" hreflang="da" href="https://concensur.dk/blog/yahoo-finance-google-sheets" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://concensur.dk/en/blog/yahoo-finance-google-sheets" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://concensur.dk/blog/yahoo-finance-google-sheets" />
+  </url>
+  <url>
+    <loc>https://concensur.dk/blog/vies-eu-vat-validering</loc>
+    <xhtml:link rel="alternate" hreflang="da" href="https://concensur.dk/blog/vies-eu-vat-validering" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://concensur.dk/en/blog/vies-eu-vat-validering" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://concensur.dk/blog/vies-eu-vat-validering" />
+  </url>
+  <url>
+    <loc>https://concensur.dk/blog/wordpress-caching-seo</loc>
+    <xhtml:link rel="alternate" hreflang="da" href="https://concensur.dk/blog/wordpress-caching-seo" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://concensur.dk/en/blog/wordpress-caching-seo" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://concensur.dk/blog/wordpress-caching-seo" />
+  </url>
+  <url>
+    <loc>https://concensur.dk/en</loc>
+    <xhtml:link rel="alternate" hreflang="da" href="https://concensur.dk/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://concensur.dk/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://concensur.dk/" />
+  </url>
+  <url>
+    <loc>https://concensur.dk/en/blog</loc>
+    <xhtml:link rel="alternate" hreflang="da" href="https://concensur.dk/blog" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://concensur.dk/en/blog" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://concensur.dk/blog" />
+  </url>
+  <url>
+    <loc>https://concensur.dk/en/blog/yahoo-finance-google-sheets</loc>
+    <xhtml:link rel="alternate" hreflang="da" href="https://concensur.dk/blog/yahoo-finance-google-sheets" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://concensur.dk/en/blog/yahoo-finance-google-sheets" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://concensur.dk/blog/yahoo-finance-google-sheets" />
+  </url>
+  <url>
+    <loc>https://concensur.dk/en/blog/vies-eu-vat-validering</loc>
+    <xhtml:link rel="alternate" hreflang="da" href="https://concensur.dk/blog/vies-eu-vat-validering" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://concensur.dk/en/blog/vies-eu-vat-validering" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://concensur.dk/blog/vies-eu-vat-validering" />
+  </url>
+  <url>
+    <loc>https://concensur.dk/en/blog/wordpress-caching-seo</loc>
+    <xhtml:link rel="alternate" hreflang="da" href="https://concensur.dk/blog/wordpress-caching-seo" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://concensur.dk/en/blog/wordpress-caching-seo" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://concensur.dk/blog/wordpress-caching-seo" />
+  </url>
+</urlset>

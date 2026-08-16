@@ -1,0 +1,10 @@
+/
+/blog
+/blog/yahoo-finance-google-sheets
+/blog/vies-eu-vat-validering
+/blog/wordpress-caching-seo
+/en
+/en/blog
+/en/blog/yahoo-finance-google-sheets
+/en/blog/vies-eu-vat-validering
+/en/blog/wordpress-caching-seo

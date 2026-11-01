@@ -262,7 +262,7 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
           tags: ['WordPress', 'SEO', 'Redesign'],
           quote:
             'Vi er godt tilfredse med vores nye hjemmeside — hurtig og billig i forhold til andre webbureauer.',
-          quoteAuthor: 'Ejer, Den Kvække Gartner',
+          quoteAuthor: 'Jesper Jacobsen, ejer',
         },
         {
           company: 'Hornbæk Vin',
@@ -495,7 +495,7 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
           tags: ['WordPress', 'SEO', 'Redesign'],
           quote:
             "We're very happy with our new website — fast and affordable compared to other web agencies.",
-          quoteAuthor: 'Owner, Den Kvække Gartner',
+          quoteAuthor: 'Jesper Jacobsen, owner',
         },
         {
           company: 'Hornbæk Vin',

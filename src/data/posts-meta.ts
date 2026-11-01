@@ -15,7 +15,7 @@ export const POST_META: Record<
     },
   },
   'automatisk-validering-af-eu-momsnumre-via-vies-en-case-med-erp-integration-og-sign-up-optimering': {
-    published: '2025-01-17T12:00:00+00:00',
+    published: '2025-01-17T17:32:13+00:00',
     modified: '2025-03-08T17:32:06+00:00',
     categories: ['automatisering', 'optimering'],
     description: {
@@ -24,7 +24,7 @@ export const POST_META: Record<
     },
   },
   'optimer-wordpress-hastighed-og-seo-med-caching': {
-    published: '2025-01-14T12:00:00+00:00',
+    published: '2025-01-14T16:44:12+00:00',
     modified: '2025-03-08T17:28:28+00:00',
     categories: ['optimering'],
     description: {

@@ -1,59 +1,31 @@
-# ConcensurSite
+# concensur.dk
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.27.
+Portfolio og blog for Concensur (Jonathan Clausen). Statisk site bygget med [Astro](https://astro.build) og hostet på Cloudflare Workers (statiske filer).
 
-## Development server
-
-To start a local development server, run:
+## Kom i gang
 
 ```bash
-ng serve
+npm install
+npm run dev        # http://localhost:4321
+npm run build      # bygger til dist/
+npm run check      # typetjek
+npm run check:urls # tjekker at alle gamle WordPress-URL'er svarer (kør mod `npm run preview` eller en URL)
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Struktur
 
-## Code scaffolding
+| Sti | Indhold |
+| --- | --- |
+| `src/data/i18n.ts` | Alle tekster på forsiden (dansk og engelsk), cases og karriere |
+| `src/data/blog.ts` | Blogindlæg (dansk og engelsk) |
+| `src/data/posts-meta.ts` | Datoer, kategorier og meta descriptions pr. indlæg |
+| `src/data/projects.ts` | Case-sider: slug, datoer, kategorier, kundelink, skærmbillede |
+| `src/assets/projects/`, `src/assets/blog/` | Billeder; filnavn = `image` i projects.ts eller blog-slug |
+| `public/_redirects` | 301-redirects fra gamle WordPress-stier |
+| `src/lib/schema.ts` | JSON-LD (Person, ProfessionalService, BlogPosting, CreativeWork, BreadcrumbList) |
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+URL'erne er bevidst identiske med det gamle WordPress-site (`/blog/<slug>/`, `/project/<slug>/`, afsluttende skråstreg).
 
-```bash
-ng generate component component-name
-```
+## Udgivelse
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+`npm run deploy` bygger og udgiver med Wrangler. Med Cloudflare Workers Builds koblet til repoet udgives `master` automatisk, og pull requests får et preview-link.

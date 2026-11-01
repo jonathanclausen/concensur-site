@@ -1,0 +1,74 @@
+---
+import { Image, getImage } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import { BLOG_POSTS } from '../data/blog';
+import { POST_META } from '../data/posts-meta';
+import { CATEGORIES } from '../data/categories';
+import { blogImage } from '../lib/images';
+import { blogPosting, breadcrumbs } from '../lib/schema';
+import { SITE } from '../data/site';
+import { prefix, type Lang } from '../i18n';
+
+interface Props { lang: Lang; slug: string }
+const { lang, slug } = Astro.props;
+const post = BLOG_POSTS[lang].find((p) => p.slug === slug)!;
+const meta = POST_META[slug];
+const p = prefix(lang);
+const path = `${p}/blog/${slug}/`;
+const img = blogImage(slug);
+const ogImage = img ? new URL((await getImage({ src: img, width: 1200, format: 'jpeg' })).src, SITE.url).href : undefined;
+const description = meta.description[lang];
+const dateFmt = new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : 'da-DK', { day: 'numeric', month: 'long', year: 'numeric' });
+const crumbs = [
+  { name: lang === 'en' ? 'Home' : 'Forside', path: `${p}/` },
+  { name: 'Blog', path: `${p}/blog/` },
+  { name: post.title, path },
+];
+const others = BLOG_POSTS[lang].filter((o) => o.slug !== slug);
+const wordCount = post.sections.map((s) => ('text' in s ? s.text : 'items' in s ? s.items.join(' ') : s.code)).join(' ').split(/\s+/).length;
+const minutes = Math.max(1, Math.round(wordCount / 200));
+---
+<Base title={`${post.title} | Concensur`} description={description} path={path} lang={lang} type="article"
+      image={img} imageAlt={post.title} published={meta.published} modified={meta.modified}
+      alternates={[{ lang: 'da', path: `/blog/${slug}/` }, { lang: 'en', path: `/en/blog/${slug}/` }]}
+      jsonLd={[blogPosting({ title: post.title, description, path, published: meta.published, modified: meta.modified, image: ogImage, lang: lang === 'en' ? 'en' : 'da-DK', section: post.category }), breadcrumbs(crumbs)]}>
+  <article class="mx-auto max-w-3xl px-4 py-14 sm:px-6">
+    <Breadcrumbs items={crumbs} label={lang === 'en' ? 'Breadcrumbs' : 'Brødkrummer'} />
+    <header class="mt-8">
+      <p class="flex flex-wrap gap-x-2 text-sm text-slate-500 dark:text-slate-400">
+        <time datetime={meta.published}>{dateFmt.format(new Date(meta.published))}</time>
+        <span aria-hidden="true">&middot;</span>
+        {lang === 'da'
+          ? meta.categories.map((c, i) => <>{i > 0 && ', '}<a class="hover:text-violet-600" href={`/blog/category/${c}/`}>{CATEGORIES[c].name}</a></>)
+          : <span>{post.category}</span>}
+        <span aria-hidden="true">&middot;</span>
+        <span>{minutes} {lang === 'en' ? 'min read' : 'min. læsning'}</span>
+      </p>
+      <h1 class="mt-3 font-display text-3xl font-bold leading-tight text-slate-900 sm:text-4xl dark:text-white">{post.title}</h1>
+      <p class="mt-4 text-sm text-slate-500 dark:text-slate-400">{lang === 'en' ? 'By' : 'Af'} <a href={`${p}/`} rel="author" class="font-medium text-slate-700 hover:text-violet-600 dark:text-slate-200">{SITE.person}</a></p>
+    </header>
+    {img && <Image src={img} alt="" widths={[720, 1440]} sizes="(min-width: 768px) 720px, 100vw" loading="eager" class="mt-8 aspect-video w-full rounded-2xl object-cover" />}
+    <div class="prose-c mt-10">
+      {post.sections.map((s) => {
+        if (s.type === 'heading') return <h2>{s.text}</h2>;
+        if (s.type === 'paragraph') return <p>{s.text}</p>;
+        if (s.type === 'list') return <ul>{s.items.map((i) => <li>{i}</li>)}</ul>;
+        return <pre><code class={s.language ? `language-${s.language}` : undefined}>{s.code}</code></pre>;
+      })}
+    </div>
+    <aside class="mt-14 rounded-2xl border border-slate-200 bg-slate-50 p-6 dark:border-white/10 dark:bg-white/[0.03]">
+      <p class="font-display font-semibold text-slate-900 dark:text-white">{lang === 'en' ? 'Need help with something similar?' : 'Har du brug for hjælp til noget lignende?'}</p>
+      <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+        {lang === 'en' ? 'Write to' : 'Skriv til'} <a class="font-medium text-violet-600 underline underline-offset-4 dark:text-violet-400" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        {lang === 'en' ? ' or use the ' : ' eller brug '}<a class="font-medium text-violet-600 underline underline-offset-4 dark:text-violet-400" href={`${p}/#contact`}>{lang === 'en' ? 'contact form' : 'kontaktformularen'}</a>.
+      </p>
+    </aside>
+    <nav class="mt-14" aria-labelledby="more-title">
+      <h2 id="more-title" class="font-display text-lg font-semibold text-slate-900 dark:text-white">{lang === 'en' ? 'More from the blog' : 'Flere indlæg'}</h2>
+      <ul class="mt-4 space-y-2">
+        {others.map((o) => <li><a href={`${p}/blog/${o.slug}/`} class="text-violet-600 hover:underline dark:text-violet-400">{o.title}</a></li>)}
+      </ul>
+    </nav>
+  </article>
+</Base>

@@ -1,0 +1,23 @@
+---
+import { t, type Lang } from '../i18n';
+import { SITE } from '../data/site';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const tr = t(lang);
+const year = new Date().getFullYear();
+---
+
+<footer class="relative border-t border-slate-200 bg-white transition-colors dark:border-white/10 dark:bg-slate-950">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent"></div>
+  <div class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 px-4 py-8 text-xs text-slate-500 sm:flex-row sm:px-6 dark:text-slate-400">
+    <p>&copy; {SITE.name} {year} &middot; {tr.footer.rights}</p>
+    <p class="flex flex-wrap items-center justify-center gap-x-2">
+      <span>CVR: {SITE.cvrDisplay}</span>
+      <span aria-hidden="true">&middot;</span>
+      <a href={`mailto:${SITE.email}`} class="hover:text-slate-900 dark:hover:text-white">{SITE.email}</a>
+      <span aria-hidden="true">&middot;</span>
+      <a href={SITE.linkedin} rel="me noopener" target="_blank" class="hover:text-slate-900 dark:hover:text-white">LinkedIn</a>
+    </p>
+  </div>
+</footer>

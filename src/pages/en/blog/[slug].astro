@@ -1,0 +1,9 @@
+---
+import BlogPost from '../../../components/BlogPost.astro';
+import { BLOG_POSTS } from '../../../data/blog';
+
+export function getStaticPaths() {
+  return BLOG_POSTS.en.map((post) => ({ params: { slug: post.slug } }));
+}
+---
+<BlogPost lang="en" slug={Astro.params.slug!} />

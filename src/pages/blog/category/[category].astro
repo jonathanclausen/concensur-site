@@ -1,0 +1,25 @@
+---
+import Base from '../../../layouts/Base.astro';
+import BlogList from '../../../components/BlogList.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { CATEGORIES, type CategorySlug } from '../../../data/categories';
+import { POST_META } from '../../../data/posts-meta';
+import { breadcrumbs } from '../../../lib/schema';
+
+export function getStaticPaths() {
+  return Object.keys(CATEGORIES).map((category) => ({ params: { category } }));
+}
+const slug = Astro.params.category as CategorySlug;
+const cat = CATEGORIES[slug];
+const slugs = Object.entries(POST_META).filter(([, m]) => m.categories.includes(slug)).map(([s]) => s);
+const crumbs = [{ name: 'Forside', path: '/' }, { name: 'Blog', path: '/blog/' }, { name: cat.name, path: `/blog/category/${slug}/` }];
+---
+<Base title={`${cat.name} | Blog | Concensur`} description={cat.description} path={`/blog/category/${slug}/`} lang="da" jsonLd={[breadcrumbs(crumbs)]}>
+  <div class="mx-auto max-w-4xl px-4 py-14 sm:px-6">
+    <Breadcrumbs items={crumbs} />
+    <p class="mt-6 font-display text-sm font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400">Kategori</p>
+    <h1 class="mt-1 font-display text-4xl font-bold text-slate-900 dark:text-white">{cat.name}</h1>
+    <p class="mt-3 max-w-2xl text-slate-600 dark:text-slate-300">{cat.description}</p>
+    <div class="mt-10"><BlogList lang="da" slugs={slugs} /></div>
+  </div>
+</Base>

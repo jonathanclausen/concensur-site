@@ -1,0 +1,77 @@
+---
+import { Image, getImage } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { PROJECTS, projectBySlug } from '../../data/projects';
+import { projectImage } from '../../lib/images';
+import { breadcrumbs, creativeWork } from '../../lib/schema';
+import { SITE } from '../../data/site';
+
+export function getStaticPaths() {
+  return PROJECTS.map((p) => ({ params: { slug: p.slug } }));
+}
+const project = projectBySlug(Astro.params.slug!)!;
+const path = `/project/${project.slug}/`;
+const img = projectImage(project.image);
+const ogImage = img ? new URL((await getImage({ src: img, width: 1200, format: 'jpeg' })).src, SITE.url).href : undefined;
+const description = `${project.challenge} ${project.solution}`.slice(0, 155).replace(/\s+\S*$/, '…');
+const crumbs = [{ name: 'Forside', path: '/' }, { name: 'Cases', path: '/project/' }, { name: project.company, path }];
+const others = PROJECTS.filter((p) => p.slug !== project.slug).slice(0, 3);
+---
+<Base title={`${project.company}: ${project.industry.split('·')[0].trim()} | Concensur`} description={description} path={path} lang="da" type="article"
+      image={img} imageAlt={`Skærmbillede af ${project.company}s hjemmeside`} modified={project.modified}
+      jsonLd={[creativeWork({ name: project.company, description, path, date: project.date, modified: project.modified, image: ogImage, client: project.company, url: project.url, keywords: project.tags }), breadcrumbs(crumbs)]}>
+  <article class="mx-auto max-w-4xl px-4 py-14 sm:px-6">
+    <Breadcrumbs items={crumbs} />
+    <header class="mt-8">
+      <p class="font-display text-sm font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400">Case &middot; <time datetime={project.date}>{project.dateLabel}</time></p>
+      <h1 class="mt-2 font-display text-4xl font-bold text-slate-900 dark:text-white">{project.company}</h1>
+      <p class="mt-2 text-slate-500 dark:text-slate-400">{project.industry}</p>
+    </header>
+
+    {img && (
+      <Image src={img} alt={`Skærmbillede af ${project.company}s hjemmeside`} widths={[640, 960, 1440]} sizes="(min-width: 896px) 832px, 100vw" loading="eager"
+             class="mt-8 w-full rounded-2xl border border-slate-200 shadow-xl dark:border-white/10" />
+    )}
+
+    <div class="mt-10 grid gap-10 md:grid-cols-[1fr_220px]">
+      <div class="prose-c">
+        <h2>Udfordringen</h2>
+        <p>{project.challenge}</p>
+        <h2>Løsningen</h2>
+        <p>{project.solution}</p>
+        {project.quote && (
+          <blockquote class="rounded-xl border-l-4 border-violet-500 bg-slate-50 p-5 dark:bg-white/5">
+            <p class="text-lg font-medium italic text-slate-800 dark:text-slate-100">&ldquo;{project.quote}&rdquo;</p>
+            <footer class="mt-2 text-sm font-semibold text-slate-500 dark:text-slate-400">— {project.quoteAuthor}</footer>
+          </blockquote>
+        )}
+      </div>
+      <aside class="space-y-6 text-sm">
+        <div>
+          <h2 class="font-display font-semibold text-slate-900 dark:text-white">Kategorier</h2>
+          <ul class="mt-2 space-y-1 text-slate-600 dark:text-slate-300">{project.categories.map((c) => <li>{c}</li>)}</ul>
+        </div>
+        <div>
+          <h2 class="font-display font-semibold text-slate-900 dark:text-white">Detaljer</h2>
+          <ul class="mt-2 flex flex-wrap gap-2">{project.details.map((d) => <li class="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-white/5 dark:text-slate-300">{d}</li>)}</ul>
+        </div>
+        {project.url && (
+          <a href={project.url} target="_blank" rel="noopener" class="inline-block rounded-full bg-gradient-to-r from-violet-600 to-cyan-500 px-5 py-2.5 font-semibold text-white shadow-lg shadow-violet-500/25">Se {project.company} &rarr;</a>
+        )}
+      </aside>
+    </div>
+
+    <section class="mt-16 rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center dark:border-white/10 dark:bg-white/[0.03]" aria-labelledby="cta-title">
+      <h2 id="cta-title" class="font-display text-xl font-semibold text-slate-900 dark:text-white">Har du et lignende projekt?</h2>
+      <p class="mt-2 text-slate-600 dark:text-slate-300">Skriv til <a class="font-medium text-violet-600 underline underline-offset-4 dark:text-violet-400" href={`mailto:${SITE.email}`}>{SITE.email}</a> eller brug <a class="font-medium text-violet-600 underline underline-offset-4 dark:text-violet-400" href="/#contact">kontaktformularen</a>.</p>
+    </section>
+
+    <nav class="mt-14" aria-labelledby="other-cases">
+      <h2 id="other-cases" class="font-display text-lg font-semibold text-slate-900 dark:text-white">Andre cases</h2>
+      <ul class="mt-4 grid gap-3 sm:grid-cols-3">
+        {others.map((o) => <li><a href={`/project/${o.slug}/`} class="block rounded-xl border border-slate-200 p-4 hover:border-violet-400 dark:border-white/10"><span class="font-medium text-slate-900 dark:text-white">{o.company}</span><span class="block text-xs text-slate-500 dark:text-slate-400">{o.industry}</span></a></li>)}
+      </ul>
+    </nav>
+  </article>
+</Base>

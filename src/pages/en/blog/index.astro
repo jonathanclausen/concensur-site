@@ -1,0 +1,20 @@
+---
+import Base from '../../../layouts/Base.astro';
+import BlogList from '../../../components/BlogList.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { breadcrumbs } from '../../../lib/schema';
+import { t } from '../../../i18n';
+
+const tr = t('en');
+const crumbs = [{ name: 'Home', path: '/en/' }, { name: 'Blog', path: '/en/blog/' }];
+---
+<Base title={tr.seo.blogTitle} description={tr.seo.blogDescription} path="/en/blog/" lang="en"
+      alternates={[{ lang: 'da', path: '/blog/' }, { lang: 'en', path: '/en/blog/' }]}
+      jsonLd={[breadcrumbs(crumbs)]}>
+  <div class="mx-auto max-w-4xl px-4 py-14 sm:px-6">
+    <Breadcrumbs items={crumbs} label="Breadcrumbs" />
+    <h1 class="mt-6 font-display text-4xl font-bold text-slate-900 dark:text-white">Blog</h1>
+    <p class="mt-3 max-w-2xl text-slate-600 dark:text-slate-300">{tr.seo.blogDescription}</p>
+    <div class="mt-10"><BlogList lang="en" /></div>
+  </div>
+</Base>

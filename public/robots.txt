@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://concensur.dk/sitemap.xml
+Sitemap: https://concensur.dk/sitemap-index.xml

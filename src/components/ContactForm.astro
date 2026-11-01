@@ -1,0 +1,77 @@
+---
+import { t, type Lang } from '../i18n';
+import { SITE } from '../data/site';
+
+interface Props { lang: Lang; subject?: string }
+const { lang, subject = 'Ny henvendelse fra concensur.dk' } = Astro.props;
+const c = t(lang).contact;
+const input =
+  'w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 transition-shadow focus:outline-none focus:ring-2 focus:ring-violet-500 dark:border-white/10 dark:bg-white/5 dark:text-white';
+---
+
+<form
+  data-contact-form
+  data-submitting={c.formSubmitting}
+  action="https://api.web3forms.com/submit"
+  method="POST"
+  class="mt-10 space-y-4 rounded-2xl border border-slate-200 bg-white p-6 text-left shadow-xl shadow-slate-900/5 sm:p-8 dark:border-white/10 dark:bg-white/[0.03]"
+>
+  <input type="hidden" name="access_key" value={SITE.web3formsKey} />
+  <input type="hidden" name="subject" value={subject} />
+  <input type="hidden" name="from_name" value="concensur.dk" />
+  <!-- Honeypot: bots fill it, people never see it -->
+  <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
+
+  <div class="grid gap-4 sm:grid-cols-2">
+    <div>
+      <label for="cf-name" class="mb-1.5 block text-xs font-semibold text-slate-600 dark:text-slate-400">{c.formName}</label>
+      <input id="cf-name" name="name" type="text" autocomplete="name" class={input} />
+    </div>
+    <div>
+      <label for="cf-email" class="mb-1.5 block text-xs font-semibold text-slate-600 dark:text-slate-400">{c.formEmail}</label>
+      <input id="cf-email" name="email" type="email" autocomplete="email" required class={input} />
+    </div>
+  </div>
+  <div>
+    <label for="cf-message" class="mb-1.5 block text-xs font-semibold text-slate-600 dark:text-slate-400">{c.formMessage}</label>
+    <textarea id="cf-message" name="message" rows="4" required placeholder={c.formMessagePlaceholder} class={`${input} resize-y`}></textarea>
+  </div>
+  <button type="submit"
+          class="w-full rounded-lg bg-gradient-to-r from-violet-600 to-cyan-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-500/25 transition-all hover:shadow-xl hover:shadow-violet-500/30 disabled:cursor-not-allowed disabled:opacity-60">
+    {c.formSubmit}
+  </button>
+  <p data-success class="hidden text-center text-sm font-medium text-emerald-600 dark:text-emerald-400" role="status">{c.formSuccess}</p>
+  <p data-error class="hidden text-center text-sm font-medium text-rose-600 dark:text-rose-400" role="alert">{c.formError}</p>
+</form>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('[data-contact-form]').forEach((form) => {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const label = button.textContent;
+      const ok = form.querySelector('[data-success]')!;
+      const err = form.querySelector('[data-error]')!;
+      ok.classList.add('hidden');
+      err.classList.add('hidden');
+      button.disabled = true;
+      button.textContent = form.dataset.submitting ?? '...';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok || json.success === false) throw new Error('send failed');
+        form.reset();
+        ok.classList.remove('hidden');
+      } catch {
+        err.classList.remove('hidden');
+      } finally {
+        button.disabled = false;
+        button.textContent = label;
+      }
+    });
+  });
+</script>

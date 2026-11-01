@@ -1,0 +1,28 @@
+# Old WordPress URLs -> new site. Content URLs (/, /blog/..., /project/...) are unchanged.
+/blog/author/*            /blog/                 301
+/author/*                 /blog/                 301
+/feed                     /rss.xml               301
+/feed/                    /rss.xml               301
+/blog/feed                /rss.xml               301
+/blog/feed/               /rss.xml               301
+/comments/feed/           /rss.xml               301
+/blog/:slug/feed/         /blog/:slug/           301
+/sitemap.xml              /sitemap-index.xml     301
+/sitemap_index.xml        /sitemap-index.xml     301
+/post-sitemap.xml         /sitemap-index.xml     301
+/page-sitemap.xml         /sitemap-index.xml     301
+/project-sitemap.xml      /sitemap-index.xml     301
+/category-sitemap.xml     /sitemap-index.xml     301
+/author-sitemap.xml       /sitemap-index.xml     301
+/wp-sitemap.xml           /sitemap-index.xml     301
+/wp-content/uploads/*     /images/legacy/:splat  301
+/forretningsbetingelser   /                      302
+/forretningsbetingelser/  /                      302
+
+# Slugs used by the unpublished Angular version
+/blog/yahoo-finance-google-sheets/   /blog/yahoo-finance-aktiepriser-i-google-sheets/   301
+/blog/vies-eu-vat-validering/        /blog/automatisk-validering-af-eu-momsnumre-via-vies-en-case-med-erp-integration-og-sign-up-optimering/   301
+/blog/wordpress-caching-seo/         /blog/optimer-wordpress-hastighed-og-seo-med-caching/   301
+/en/blog/yahoo-finance-google-sheets/   /en/blog/yahoo-finance-aktiepriser-i-google-sheets/   301
+/en/blog/vies-eu-vat-validering/        /en/blog/automatisk-validering-af-eu-momsnumre-via-vies-en-case-med-erp-integration-og-sign-up-optimering/   301
+/en/blog/wordpress-caching-seo/         /en/blog/optimer-wordpress-hastighed-og-seo-med-caching/   301

@@ -1,0 +1,16 @@
+---
+interface Props { items: { name: string; path: string }[]; label?: string }
+const { items, label = 'Brødkrummer' } = Astro.props;
+---
+<nav aria-label={label} class="text-sm text-slate-500 dark:text-slate-400">
+  <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
+    {items.map((item, i) => (
+      <li class="flex items-center gap-x-2">
+        {i > 0 && <span aria-hidden="true">/</span>}
+        {i < items.length - 1
+          ? <a href={item.path} class="hover:text-slate-900 dark:hover:text-white">{item.name}</a>
+          : <span aria-current="page" class="text-slate-700 dark:text-slate-200">{item.name}</span>}
+      </li>
+    ))}
+  </ol>
+</nav>

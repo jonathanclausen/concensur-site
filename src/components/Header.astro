@@ -12,7 +12,6 @@ const current = Astro.url.pathname;
 
 const links = [
   { href: `${p}/`, label: tr.nav.home, exact: true },
-  { href: '/project/', label: lang === 'en' ? 'Cases' : 'Cases', exact: false },
   { href: `${p}/blog/`, label: tr.nav.blog, exact: false },
 ];
 const isActive = (href: string, exact: boolean) => (exact ? current === href : current.startsWith(href));

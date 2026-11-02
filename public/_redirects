@@ -18,6 +18,10 @@
 /forretningsbetingelser   /                      302
 /forretningsbetingelser/  /                      302
 
+# Case pages were replaced by the "Har arbejdet med" section on the front page
+/project/                 /#worked-with          301
+/project/*                /#worked-with          301
+
 # Slugs used by the unpublished Angular version
 /blog/yahoo-finance-google-sheets/   /blog/yahoo-finance-aktiepriser-i-google-sheets/   301
 /blog/vies-eu-vat-validering/        /blog/automatisk-validering-af-eu-momsnumre-via-vies-en-case-med-erp-integration-og-sign-up-optimering/   301

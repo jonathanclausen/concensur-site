@@ -69,18 +69,3 @@ export const blogPosting = (p: {
   author: { '@id': personId, '@type': 'Person', name: SITE.person, url: `${SITE.url}/` },
   publisher: { '@id': businessId },
 });
-
-export const creativeWork = (p: { name: string; description: string; path: string; date: string; modified: string; image?: string; client?: string; url?: string; keywords: string[] }) => ({
-  '@context': 'https://schema.org',
-  '@type': 'CreativeWork',
-  name: p.name,
-  description: p.description,
-  url: abs(p.path),
-  dateCreated: p.date,
-  dateModified: p.modified,
-  image: p.image,
-  keywords: p.keywords.join(', '),
-  creator: { '@id': businessId },
-  ...(p.url ? { sameAs: p.url } : {}),
-  ...(p.client ? { sourceOrganization: { '@type': 'Organization', name: p.client, ...(p.url ? { url: p.url } : {}) } } : {}),
-});

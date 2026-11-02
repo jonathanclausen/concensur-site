@@ -3,13 +3,11 @@
 const base = process.argv[2] ?? 'http://localhost:4321';
 
 const KEEP = [
-  '/', '/blog/', '/project/',
+  '/', '/blog/',
   '/blog/yahoo-finance-aktiepriser-i-google-sheets/',
   '/blog/automatisk-validering-af-eu-momsnumre-via-vies-en-case-med-erp-integration-og-sign-up-optimering/',
   '/blog/optimer-wordpress-hastighed-og-seo-med-caching/',
   '/blog/category/automatisering/', '/blog/category/optimering/',
-  '/project/luxury-by-ho/', '/project/33499/', '/project/auto-mow/',
-  '/project/den-kvaekke-gartner/', '/project/hornbaek-vin/', '/project/349/',
   '/en/', '/en/blog/', '/rss.xml', '/sitemap-index.xml', '/robots.txt',
 ];
 const REDIRECT = {
@@ -17,6 +15,9 @@ const REDIRECT = {
   '/feed/': '/rss.xml',
   '/sitemap_index.xml': '/sitemap-index.xml',
   '/post-sitemap.xml': '/sitemap-index.xml',
+  '/project/': '/',
+  '/project/349/': '/',
+  '/project/luxury-by-ho/': '/',
 };
 
 let failed = 0;

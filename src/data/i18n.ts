@@ -1,14 +1,5 @@
 export type Lang = 'da' | 'en';
 
-export interface CaseStudy {
-  company: string;
-  industry: string;
-  challenge: string;
-  solution: string;
-  tags: string[];
-  quote: string;
-  quoteAuthor: string;
-}
 
 export interface TimelineItem {
   company: string;
@@ -43,20 +34,17 @@ export interface Translations {
     subheading: string;
     items: { title: string; description: string }[];
   };
+  workedWith: {
+    heading: string;
+    subheading: string;
+    employers: string;
+    clients: string;
+  };
   timeline: {
     heading: string;
     subheading: string;
     currentLabel: string;
     items: TimelineItem[];
-  };
-  caseStudies: {
-    heading: string;
-    subheading: string;
-    challengeLabel: string;
-    solutionLabel: string;
-    readMore: string;
-    readLess: string;
-    items: CaseStudy[];
   };
   about: {
     heading: string;
@@ -150,6 +138,12 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
         },
       ],
     },
+    workedWith: {
+      heading: 'Har arbejdet med',
+      subheading: 'Virksomheder jeg har arbejdet for og med',
+      employers: 'Ansættelser',
+      clients: 'Freelancekunder',
+    },
     timeline: {
       heading: 'Karriere',
       subheading: 'Min professionelle rejse',
@@ -207,85 +201,6 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
           description:
             'Udviklede et BDD-testframework til cBrains lavkode-sprog, ledte konverteringen af den interne DevOps-arbejdsgang til Git, og byggede en allokeringsplatform oven på Azure DevOps.',
           current: false,
-        },
-      ],
-    },
-    caseStudies: {
-      heading: 'Tidligere freelancearbejde',
-      subheading: 'Udvalgte projekter fra min freelancekarriere',
-      challengeLabel: 'Udfordring',
-      solutionLabel: 'Løsning',
-      readMore: 'Læs mere',
-      readLess: 'Vis mindre',
-      items: [
-        {
-          company: 'Luxury by Ho',
-          industry: 'E-commerce · Luksus second-hand tasker',
-          challenge:
-            'Et ekspanderende marked for second-hand tasker krævede en webshop, der hurtigt kunne følge med nye idéer og features.',
-          solution:
-            'Løbende WooCommerce-udvikling med nye features, SEO og e-mailmarkedsføring — bygget til hurtige iterationer fra idé til lancering.',
-          tags: ['WooCommerce', 'SEO', 'Email marketing'],
-          quote: 'Fra vi får en idé, til den er implementeret, går der ikke lang tid.',
-          quoteAuthor: 'Christian Ho, stifter',
-        },
-        {
-          company: 'DRT Architects',
-          industry: 'Arkitektfirma · Boston, USA',
-          challenge:
-            'Et arkitektfirma manglede en professionel hjemmeside til at fremvise deres portfolio — og et team, der selv kunne vedligeholde den.',
-          solution:
-            'Et skræddersyet WordPress-tema med et rent, enkelt design og SEO-optimering, bygget så DRT selv kan opdatere indholdet.',
-          tags: ['WordPress', 'SEO', 'Custom tema'],
-          quote: '',
-          quoteAuthor: '',
-        },
-        {
-          company: 'Auto-Mow',
-          industry: 'B2B e-commerce · EU-handel',
-          challenge:
-            'Handel med virksomheder i hele Europa betød, at behovene voksede ud af en almindelig dansk webshop.',
-          solution:
-            'En B2B WooCommerce-webshop med brugerdefinerede funktioner, ERP/CRM-integrationer og målrettede e-mailkampagner klar til EU-marked.',
-          tags: ['WooCommerce', 'ERP-integration', 'CRM'],
-          quote:
-            'Da vi handler med virksomheder i hele Europa, havde vi nogle større behov end en dansk webshop.',
-          quoteAuthor: 'Auto-Mow',
-        },
-        {
-          company: 'Den Kvække Gartner',
-          industry: 'Havedesign & anlægsgartner',
-          challenge:
-            'Hjemmesiden, som firmaet brugte til at fremvise idéer til kunder i gallerier, havde ikke været opdateret i 10 år.',
-          solution:
-            'Et gennemgribende redesign med galleri-fokuseret layout og SEO-optimering, tilpasset moderne designtrends.',
-          tags: ['WordPress', 'SEO', 'Redesign'],
-          quote:
-            'Vi er godt tilfredse med vores nye hjemmeside — hurtig og billig i forhold til andre webbureauer.',
-          quoteAuthor: 'Jesper Jacobsen, ejer',
-        },
-        {
-          company: 'Hornbæk Vin',
-          industry: 'Vinhandel',
-          challenge:
-            'Emil manglede et sted at præsentere sine fine vine med den respekt, de fortjener.',
-          solution:
-            'Et WordPress-redesign med skræddersyet billedredigering og SEO, der viser vinene frem på en ordentlig måde.',
-          tags: ['WordPress', 'SEO', 'Billedredigering'],
-          quote:
-            'Leverede en flot hjemmeside med professionelt design og god service, til en virkelig fair pris.',
-          quoteAuthor: 'Emil Jacobsen, ejer',
-        },
-        {
-          company: 'Kronborg Knights',
-          industry: 'Sportsklub · American football',
-          challenge:
-            'Helsingørs american football-klub havde brug for ét sted at informere medlemmer om arrangementer og modtage nye tilmeldinger.',
-          solution:
-            'En WordPress-hjemmeside bygget til begivenhedsinfo og medlemstilmelding — stadig klubbens digitale hjem i dag.',
-          tags: ['WordPress', 'Medlemshåndtering'],
-          quote: '',
-          quoteAuthor: '',
         },
       ],
     },
@@ -383,6 +298,12 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
         },
       ],
     },
+    workedWith: {
+      heading: 'Worked with',
+      subheading: 'Companies I have worked for and with',
+      employers: 'Employers',
+      clients: 'Freelance clients',
+    },
     timeline: {
       heading: 'Career',
       subheading: 'My professional journey',
@@ -440,85 +361,6 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
           description:
             "Built a BDD testing framework for cBrain's low-code language, led the conversion of the internal DevOps workflow to Git, and built a resource-allocation platform on top of Azure DevOps.",
           current: false,
-        },
-      ],
-    },
-    caseStudies: {
-      heading: 'Earlier freelance work',
-      subheading: 'Selected projects from my freelance career',
-      challengeLabel: 'Challenge',
-      solutionLabel: 'Solution',
-      readMore: 'Read more',
-      readLess: 'Show less',
-      items: [
-        {
-          company: 'Luxury by Ho',
-          industry: 'E-commerce · Luxury pre-owned handbags',
-          challenge:
-            'An expanding market for second-hand bags demanded a webshop that could keep pace with new features and ideas.',
-          solution:
-            'Ongoing WooCommerce development — new features, SEO, and email marketing — built for fast iteration from idea to launch.',
-          tags: ['WooCommerce', 'SEO', 'Email marketing'],
-          quote: "From the moment we have an idea to it being implemented doesn't take long.",
-          quoteAuthor: 'Christian Ho, Founder',
-        },
-        {
-          company: 'DRT Architects',
-          industry: 'Architecture firm · Boston, USA',
-          challenge:
-            'An architecture firm needed a professional website to showcase their portfolio — and a team that could maintain it themselves.',
-          solution:
-            'A custom WordPress theme with a clean, simple design and SEO optimization, built so the DRT team can update it going forward.',
-          tags: ['WordPress', 'SEO', 'Custom theme'],
-          quote: '',
-          quoteAuthor: '',
-        },
-        {
-          company: 'Auto-Mow',
-          industry: 'B2B e-commerce · EU trade',
-          challenge:
-            'Trading with businesses across Europe meant their needs had outgrown a standard Danish webshop.',
-          solution:
-            'A B2B WooCommerce webshop with custom features, ERP/CRM integrations, and targeted email campaigns, ready for the EU market.',
-          tags: ['WooCommerce', 'ERP integration', 'CRM'],
-          quote:
-            "Since we trade with companies across Europe, we had bigger needs than a Danish webshop.",
-          quoteAuthor: 'Auto-Mow',
-        },
-        {
-          company: 'Den Kvække Gartner',
-          industry: 'Garden design & landscaping',
-          challenge:
-            "The website the firm used to showcase ideas to customers through galleries hadn't been updated in 10 years.",
-          solution:
-            'A full redesign with a gallery-focused layout and SEO optimization, aligned with modern design trends.',
-          tags: ['WordPress', 'SEO', 'Redesign'],
-          quote:
-            "We're very happy with our new website — fast and affordable compared to other web agencies.",
-          quoteAuthor: 'Jesper Jacobsen, owner',
-        },
-        {
-          company: 'Hornbæk Vin',
-          industry: 'Wine retailer',
-          challenge:
-            'Emil lacked a place to showcase his fine wines with the respect they deserve.',
-          solution:
-            'A WordPress redesign with custom image editing and SEO, presenting the wines properly.',
-          tags: ['WordPress', 'SEO', 'Image editing'],
-          quote:
-            'Delivered a beautiful website with professional design and good service, at a really fair price.',
-          quoteAuthor: 'Emil Jacobsen, Owner',
-        },
-        {
-          company: 'Kronborg Knights',
-          industry: 'Sports club · American football',
-          challenge:
-            "Helsingør's American football club needed one place to inform members about events and handle new sign-ups.",
-          solution:
-            "A WordPress website built for event info and member registration — still the club's digital home today.",
-          tags: ['WordPress', 'Membership'],
-          quote: '',
-          quoteAuthor: '',
         },
       ],
     },

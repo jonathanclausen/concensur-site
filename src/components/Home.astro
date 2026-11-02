@@ -1,11 +1,10 @@
 ---
 import { Image } from 'astro:assets';
 import portrait from '../assets/jonathan-clausen.jpg';
-import ProjectCard from './ProjectCard.astro';
 import SectionHeading from './SectionHeading.astro';
 import ContactForm from './ContactForm.astro';
 import { t, prefix, type Lang } from '../i18n';
-import { PROJECTS } from '../data/projects';
+import { EMPLOYERS, CLIENTS } from '../data/companies';
 import { SITE } from '../data/site';
 import { BLOG_POSTS } from '../data/blog';
 import { POST_META } from '../data/posts-meta';
@@ -68,13 +67,20 @@ const dateFmt = new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : 'da-DK', { day
   </div>
 </section>
 
-<!-- Cases -->
-<section id="cases" class="scroll-mt-20 border-y border-slate-200 bg-slate-50 transition-colors dark:border-white/10 dark:bg-white/[0.02]" aria-labelledby="cases-title">
-  <div class="mx-auto max-w-5xl px-4 py-20 sm:px-6">
-    <SectionHeading id="cases-title" eyebrow={tr.caseStudies.heading} title={tr.caseStudies.subheading} />
-    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {PROJECTS.map((project, i) => (
-        <ProjectCard project={project} text={tr.caseStudies.items[i]} readMore={tr.caseStudies.readMore} />
+<!-- Worked with -->
+<section id="worked-with" class="scroll-mt-20 border-y border-slate-200 bg-slate-50 transition-colors dark:border-white/10 dark:bg-white/[0.02]" aria-labelledby="worked-with-title">
+  <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6">
+    <SectionHeading id="worked-with-title" eyebrow={tr.workedWith.heading} title={tr.workedWith.subheading} />
+    <div class="grid gap-10 md:grid-cols-[1fr_2fr]">
+      {[{ label: tr.workedWith.employers, names: EMPLOYERS }, { label: tr.workedWith.clients, names: CLIENTS }].map((group) => (
+        <div>
+          <h3 class="text-center text-xs font-semibold uppercase tracking-widest text-slate-500 md:text-left dark:text-slate-400">{group.label}</h3>
+          <ul class="mt-4 flex flex-wrap justify-center gap-x-8 gap-y-3 md:justify-start">
+            {group.names.map((name) => (
+              <li class="font-display text-xl font-semibold text-slate-600 dark:text-slate-300">{name}</li>
+            ))}
+          </ul>
+        </div>
       ))}
     </div>
   </div>

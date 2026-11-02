@@ -16,7 +16,7 @@ export const person = () => ({
   telephone: SITE.phoneHref,
   jobTitle: 'Softwareudvikler',
   alumniOf: { '@type': 'CollegeOrUniversity', name: 'Københavns Universitet' },
-  knowsAbout: ['.NET', 'C#', 'ASP.NET', 'Angular', 'React', 'WooCommerce', 'WordPress', 'Procesautomatisering'],
+  knowsAbout: ['Agentic engineering', 'AI-kodeagenter', '.NET', 'C#', 'ASP.NET', 'Angular', 'React', 'WooCommerce', 'WordPress', 'Procesautomatisering'],
   worksFor: { '@id': businessId },
   sameAs: [SITE.linkedin, SITE.instagram],
 });

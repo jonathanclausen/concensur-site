@@ -107,6 +107,11 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
       subheading: 'Hvad jeg kan hjælpe dig med',
       items: [
         {
+          title: 'Agentic engineering',
+          description:
+            'Jeg arbejder dagligt med AI-kodeagenter som Claude Code og hjælper teams med at få dem til at levere kode, der holder i produktion: kontekst og instruktioner til kodebasen, MCP-integrationer til egne systemer, og review- og testprocesser omkring agenternes arbejde. Jeg bygger også agentbaserede løsninger, hvor LLM\'er med værktøjskald automatiserer forretningsprocesser fra ende til anden.',
+        },
+        {
           title: '.NET Udvikling',
           description:
             'Solid erfaring med at udvikle effektive, skalerbare løsninger på .NET-platformen til enterprise-miljøer. Jeg bruger C#, ASP.NET, Entity Framework og MSSQL Server til at skrive robust og vedligeholdelsesvenlig kode, der er bygget til at holde i store, kritiske systemer.',
@@ -266,6 +271,11 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
       heading: 'Competencies',
       subheading: 'What I can help you with',
       items: [
+        {
+          title: 'Agentic engineering',
+          description:
+            'I work with AI coding agents like Claude Code every day and help teams get them to ship code that holds up in production: context and instructions for the codebase, MCP integrations with in-house systems, and review and test processes around the agents\' work. I also build agent-based solutions where LLMs with tool calling automate business processes end to end.',
+        },
         {
           title: '.NET Development',
           description:

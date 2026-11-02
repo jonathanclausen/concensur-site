@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import Home from '../components/Home.astro';
+import { t } from '../i18n';
+import { person, business, website } from '../lib/schema';
+
+const tr = t('da');
+---
+<Base title={tr.seo.homeTitle} description={tr.seo.homeDescription} path="/" lang="da"
+      alternates={[{ lang: 'da', path: '/' }, { lang: 'en', path: '/en/' }]}
+      jsonLd={[website(), person(), business()]}>
+  <Home lang="da" />
+</Base>

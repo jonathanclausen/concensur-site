@@ -1,0 +1,414 @@
+export type Lang = 'da' | 'en';
+
+
+export interface TimelineItem {
+  company: string;
+  role: string;
+  date: string;
+  location: string;
+  description: string;
+  current: boolean;
+}
+
+export interface Translations {
+  seo: {
+    homeTitle: string;
+    homeDescription: string;
+    blogTitle: string;
+    blogDescription: string;
+  };
+  nav: {
+    home: string;
+    blog: string;
+  };
+  hero: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    description: string;
+    cta: string;
+    ctaSecondary: string;
+  };
+  competencies: {
+    heading: string;
+    subheading: string;
+    items: { title: string; description: string }[];
+  };
+  workedWith: {
+    heading: string;
+    subheading: string;
+    employers: string;
+    clients: string;
+  };
+  timeline: {
+    heading: string;
+    subheading: string;
+    currentLabel: string;
+    items: TimelineItem[];
+  };
+  about: {
+    heading: string;
+    name: string;
+    role: string;
+    text: string[];
+    statYears: string;
+    statCompanies: string;
+    statSince: string;
+  };
+  contact: {
+    heading: string;
+    subheading: string;
+    orForm: string;
+    email: string;
+    formName: string;
+    formEmail: string;
+    formMessage: string;
+    formMessagePlaceholder: string;
+    formSubmit: string;
+    formSubmitting: string;
+    formSuccess: string;
+    formError: string;
+  };
+  footer: {
+    terms: string;
+    rights: string;
+  };
+  blog: {
+    heading: string;
+    empty: string;
+    notFound: string;
+  };
+}
+
+export const TRANSLATIONS: Record<Lang, Translations> = {
+  da: {
+    seo: {
+      homeTitle: 'Concensur | Full-stack .NET-udvikler',
+      homeDescription:
+        'Softwareudvikler med speciale i full-stack .NET-udvikling i skalerede arkitekturer. Tager freelanceprojekter inden for webudvikling, e-commerce og automatisering.',
+      blogTitle: 'Blog | Concensur',
+      blogDescription: 'Artikler om automatisering, .NET-udvikling og webshop-optimering fra Jonathan Clausen.',
+    },
+    nav: {
+      home: 'Forside',
+      blog: 'Blog',
+    },
+    hero: {
+      eyebrow: 'Full-stack .NET-udvikler',
+      title: 'Jeg bygger software, der driver din forretning fremad',
+      subtitle: '.NET · Full Stack · Skaleret arkitektur',
+      description:
+        'Jeg er softwareudvikler med speciale i full-stack .NET-udvikling i skalerede, shardede arkitekturer. Ved siden af mit daglige arbejde tager jeg freelanceprojekter inden for webudvikling, e-commerce og automatisering, hvor jeg hjælper virksomheder med at optimere deres processer og skabe robuste, skræddersyede løsninger.',
+      cta: 'Kontakt mig',
+      ctaSecondary: 'Se mine kompetencer',
+    },
+    competencies: {
+      heading: 'Kompetencer',
+      subheading: 'Hvad jeg kan hjælpe dig med',
+      items: [
+        {
+          title: 'Agentic engineering',
+          description:
+            'Jeg arbejder dagligt med AI-kodeagenter som Claude Code og hjælper teams med at få dem til at levere kode, der holder i produktion: kontekst og instruktioner til kodebasen, MCP-integrationer til egne systemer, og review- og testprocesser omkring agenternes arbejde. Jeg bygger også agentbaserede løsninger, hvor LLM\'er med værktøjskald automatiserer forretningsprocesser fra ende til anden.',
+        },
+        {
+          title: '.NET Udvikling',
+          description:
+            'Solid erfaring med at udvikle effektive, skalerbare løsninger på .NET-platformen til enterprise-miljøer. Jeg bruger C#, ASP.NET, Entity Framework og MSSQL Server til at skrive robust og vedligeholdelsesvenlig kode, der er bygget til at holde i store, kritiske systemer.',
+        },
+        {
+          title: 'Full-Stack udvikling',
+          description:
+            'Som full stack-udvikler bygger jeg komplette applikationer, der dækker både frontend og backend. Jeg bruger Angular og React til dynamiske, responsive brugergrænseflader, og implementerer backend-løsninger med RPC og REST for effektiv systemkommunikation.',
+        },
+        {
+          title: 'Skaleret & distribueret arkitektur',
+          description:
+            'Erfaring med at designe og videreudvikle software i skalerede, shardede arkitekturer, hvor performance, datakonsistens og driftsstabilitet er afgørende i takt med at systemet og brugerbasen vokser.',
+        },
+        {
+          title: 'Rapportering',
+          description:
+            'Jeg udvikler og implementerer rapporteringsværktøjer, der giver realtidsindsigt i virksomhedens processer og performance. Ved at kombinere automatisering og datadrevet rapportering hjælper jeg organisationer med at træffe informerede beslutninger.',
+        },
+        {
+          title: 'Optimering af processer',
+          description:
+            'Jeg optimerer og automatiserer arbejdsprocesser for at forbedre effektiviteten og reducere manuelle opgaver, med scripts til datahåndtering, systemintegrationer og opgaveautomatisering.',
+        },
+        {
+          title: 'E-commerce & WordPress (freelance)',
+          description:
+            'Ved siden af mit faste arbejde har jeg stor erfaring med at udvikle og vedligeholde e-commerce-løsninger som freelancer, hvor WooCommerce og WordPress er mine primære værktøjer — fra temacustomisering og betalingsintegration til SEO og performance.',
+        },
+      ],
+    },
+    workedWith: {
+      heading: 'Har arbejdet med',
+      subheading: 'Virksomheder jeg har arbejdet for og med',
+      employers: 'Ansættelser',
+      clients: 'Freelancekunder',
+    },
+    timeline: {
+      heading: 'Karriere',
+      subheading: 'Min professionelle rejse',
+      currentLabel: 'Nuværende',
+      items: [
+        {
+          company: 'Dalux',
+          role: 'Team Lead',
+          date: 'Jul. 2025 – nu',
+          location: 'København Ø',
+          description:
+            'Fører et udviklerteam og er fortsat aktiv i det tekniske arbejde med skalerede .NET-systemer.',
+          current: true,
+        },
+        {
+          company: 'Dalux',
+          role: 'Software Developer',
+          date: 'Sep. 2024 – jul. 2025',
+          location: 'København',
+          description: 'Udviklede software i en skaleret, shardet arkitektur hos Dalux.',
+          current: false,
+        },
+        {
+          company: 'Concensur · Freelance',
+          role: 'Software Developer',
+          date: 'Jan. 2019 – nu',
+          location: 'Region Hovedstaden',
+          description:
+            'Freelance full-stack-udvikling for en bred vifte af kunder med fokus på systemintegration, procesautomatisering og workflow-optimering.',
+          current: true,
+        },
+        {
+          company: 'cBrain',
+          role: 'Software Developer',
+          date: 'Feb. 2023 – nov. 2023',
+          location: 'København',
+          description:
+            'Del af R&D-teamet for processer og integrationer; bidrog til cBrains domænespecifikke sprog (DSL), VSCode-plugins, DevOps-pipelines og F2 REST API\'et. Tech: .NET, C#, MSSQL, ElasticSearch, REST, Node.js, TypeScript.',
+          current: false,
+        },
+        {
+          company: 'cBrain',
+          role: 'Software Developer',
+          date: 'Sep. 2022 – feb. 2023',
+          location: 'København',
+          description:
+            'Udviklede skræddersyede integrationer og løsninger oven på F2-platformen for kunder i den centrale administration, med fokus på robusthed og effektivitet i produktion.',
+          current: false,
+        },
+        {
+          company: 'cBrain',
+          role: 'Student Software Developer',
+          date: 'Jun. 2021 – sep. 2022',
+          location: 'København',
+          description:
+            'Udviklede et BDD-testframework til cBrains lavkode-sprog, ledte konverteringen af den interne DevOps-arbejdsgang til Git, og byggede en allokeringsplatform oven på Azure DevOps.',
+          current: false,
+        },
+      ],
+    },
+    about: {
+      heading: 'Om mig',
+      name: 'Jonathan Clausen',
+      role: 'Softwareudvikler',
+      text: [
+        'Jeg er datalog uddannet fra Københavns Universitet med en passion for softwareudvikling og digital innovation. I dag arbejder jeg som full-stack .NET-udvikler hos Dalux, hvor jeg er med til at bygge software i en skaleret, shardet arkitektur. Tidligere har jeg arbejdet som softwareudvikler hos cBrain.',
+        'Siden 2019 har jeg desuden taget freelanceprojekter ved siden af mit faste arbejde, hvor jeg har haft mulighed for at bidrage til en bred vifte af projekter — fra skalerbare webapplikationer til procesautomatisering.',
+        'Med en solid teknisk baggrund og erfaring fra både store virksomheder og mindre, fleksible projekter, er jeg i stand til at håndtere både komplekse tekniske udfordringer og udviklingsprojekter med fokus på resultater.',
+      ],
+      statYears: 'års erfaring',
+      statCompanies: 'virksomheder',
+      statSince: 'freelance siden',
+    },
+    contact: {
+      heading: 'Har du lyst til en samtale?',
+      subheading: 'Kontakt mig på jc@concensur.dk',
+      orForm: 'Eller via formularen.',
+      email: 'Email',
+      formName: 'Navn',
+      formEmail: 'E-mailadresse',
+      formMessage: 'Besked',
+      formMessagePlaceholder: 'Fortæl mig om dit projekt...',
+      formSubmit: 'Send',
+      formSubmitting: 'Sender...',
+      formSuccess: 'Tak for din besked! Jeg vender tilbage hurtigst muligt.',
+      formError: 'Der gik noget galt. Prøv igen, eller skriv direkte til jc@concensur.dk.',
+    },
+    footer: {
+      terms: 'Forretningsbetingelser',
+      rights: 'Alle rettigheder forbeholdes',
+    },
+    blog: {
+      heading: 'Blogindlæg',
+      empty: 'Der er ingen blogindlæg endnu — kom snart tilbage.',
+      notFound: 'Vi kunne ikke finde det blogindlæg.',
+    },
+  },
+  en: {
+    seo: {
+      homeTitle: 'Concensur | Full-stack .NET Developer',
+      homeDescription:
+        'Software developer specializing in full-stack .NET development within scaled architectures. Available for freelance projects in web development, e-commerce, and automation.',
+      blogTitle: 'Blog | Concensur',
+      blogDescription: 'Articles on automation, .NET development, and webshop optimization from Jonathan Clausen.',
+    },
+    nav: {
+      home: 'Home',
+      blog: 'Blog',
+    },
+    hero: {
+      eyebrow: 'Full-stack .NET Developer',
+      title: 'I build software that moves your business forward',
+      subtitle: '.NET · Full Stack · Scalable Architecture',
+      description:
+        "I'm a software developer specializing in full-stack .NET development within scaled, sharded architectures. Alongside my day-to-day work, I take on freelance projects in web development, e-commerce, and automation, helping businesses optimize their processes and build robust, tailored solutions.",
+      cta: 'Contact me',
+      ctaSecondary: 'See my skills',
+    },
+    competencies: {
+      heading: 'Competencies',
+      subheading: 'What I can help you with',
+      items: [
+        {
+          title: 'Agentic engineering',
+          description:
+            'I work with AI coding agents like Claude Code every day and help teams get them to ship code that holds up in production: context and instructions for the codebase, MCP integrations with in-house systems, and review and test processes around the agents\' work. I also build agent-based solutions where LLMs with tool calling automate business processes end to end.',
+        },
+        {
+          title: '.NET Development',
+          description:
+            "Solid experience developing efficient, scalable solutions on the .NET platform for enterprise environments. I use C#, ASP.NET, Entity Framework, and MSSQL Server to write robust, maintainable code built to hold up in large, critical systems.",
+        },
+        {
+          title: 'Full-Stack Development',
+          description:
+            'As a full-stack developer, I build complete applications covering both frontend and backend. I use Angular and React for dynamic, responsive interfaces, and implement backend solutions with RPC and REST for efficient system communication.',
+        },
+        {
+          title: 'Scalable & Distributed Architecture',
+          description:
+            "Experience designing and evolving software in scaled, sharded architectures, where performance, data consistency, and operational stability matter as the system and user base grow.",
+        },
+        {
+          title: 'Reporting',
+          description:
+            'I develop and implement reporting tools that give real-time insight into business processes and performance. By combining automation with data-driven reporting, I help organizations make informed decisions.',
+        },
+        {
+          title: 'Process Optimization',
+          description:
+            'I optimize and automate workflows to improve efficiency and reduce manual tasks, with scripts for data handling, system integrations, and task automation.',
+        },
+        {
+          title: 'E-commerce & WordPress (freelance)',
+          description:
+            "Alongside my full-time role, I have extensive freelance experience building and maintaining e-commerce solutions, with WooCommerce and WordPress as my primary tools — from theme customization and payment integration to SEO and performance.",
+        },
+      ],
+    },
+    workedWith: {
+      heading: 'Worked with',
+      subheading: 'Companies I have worked for and with',
+      employers: 'Employers',
+      clients: 'Freelance clients',
+    },
+    timeline: {
+      heading: 'Career',
+      subheading: 'My professional journey',
+      currentLabel: 'Current',
+      items: [
+        {
+          company: 'Dalux',
+          role: 'Team Lead',
+          date: 'Jul 2025 – Present',
+          location: 'Copenhagen Ø',
+          description:
+            'Leading a development team while staying hands-on with the technical work on scaled .NET systems.',
+          current: true,
+        },
+        {
+          company: 'Dalux',
+          role: 'Software Developer',
+          date: 'Sep 2024 – Jul 2025',
+          location: 'Copenhagen',
+          description: 'Developed software within a scaled, sharded architecture at Dalux.',
+          current: false,
+        },
+        {
+          company: 'Concensur · Freelance',
+          role: 'Software Developer',
+          date: 'Jan 2019 – Present',
+          location: 'Capital Region, Denmark',
+          description:
+            'Freelance full-stack development for a wide range of clients, focused on system integration, process automation, and workflow optimization.',
+          current: true,
+        },
+        {
+          company: 'cBrain',
+          role: 'Software Developer',
+          date: 'Feb 2023 – Nov 2023',
+          location: 'Copenhagen',
+          description:
+            "Part of the R&D team for processes and integrations; contributed to cBrain's proprietary DSL, VSCode plugins, DevOps pipelines, and the F2 REST API. Tech: .NET, C#, MSSQL, ElasticSearch, REST, Node.js, TypeScript.",
+          current: false,
+        },
+        {
+          company: 'cBrain',
+          role: 'Software Developer',
+          date: 'Sep 2022 – Feb 2023',
+          location: 'Copenhagen',
+          description:
+            'Built tailored integrations and solutions on top of the F2 platform for clients in the central administration domain, with a focus on robustness and production efficiency.',
+          current: false,
+        },
+        {
+          company: 'cBrain',
+          role: 'Student Software Developer',
+          date: 'Jun 2021 – Sep 2022',
+          location: 'Copenhagen',
+          description:
+            "Built a BDD testing framework for cBrain's low-code language, led the conversion of the internal DevOps workflow to Git, and built a resource-allocation platform on top of Azure DevOps.",
+          current: false,
+        },
+      ],
+    },
+    about: {
+      heading: 'About me',
+      name: 'Jonathan Clausen',
+      role: 'Software Developer',
+      text: [
+        "I hold a computer science degree from the University of Copenhagen, with a passion for software development and digital innovation. I currently work as a full-stack .NET developer at Dalux, building software within a scaled, sharded architecture. I previously worked as a software developer at cBrain.",
+        "Since 2019, I've also taken on freelance projects alongside my full-time role, contributing to a wide range of work — from scalable web applications to process automation.",
+        "With a solid technical background and experience from both large companies and smaller, flexible projects, I'm equipped to handle complex technical challenges as well as results-focused development work.",
+      ],
+      statYears: 'years experience',
+      statCompanies: 'companies',
+      statSince: 'freelance since',
+    },
+    contact: {
+      heading: 'Fancy a chat?',
+      subheading: 'Contact me at jc@concensur.dk',
+      orForm: 'Or via the form.',
+      email: 'Email',
+      formName: 'Name',
+      formEmail: 'Email address',
+      formMessage: 'Message',
+      formMessagePlaceholder: 'Tell me about your project...',
+      formSubmit: 'Send',
+      formSubmitting: 'Sending...',
+      formSuccess: "Thanks for your message! I'll get back to you soon.",
+      formError: 'Something went wrong. Please try again, or email jc@concensur.dk directly.',
+    },
+    footer: {
+      terms: 'Business terms',
+      rights: 'All rights reserved',
+    },
+    blog: {
+      heading: 'Blog posts',
+      empty: 'No blog posts yet — check back soon.',
+      notFound: "We couldn't find that blog post.",
+    },
+  },
+};
